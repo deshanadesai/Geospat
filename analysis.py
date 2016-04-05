@@ -67,4 +67,4 @@ for day in df['Day'].unique():
 		writer = csv.writer(filename)
 		writer.writerow(['ID','Starting Time','Ending Time','Number of data points'])
 		for uid in df['ID'].unique():
-			num_holes(uid,day)'''
+			num_holes(uid,day)
