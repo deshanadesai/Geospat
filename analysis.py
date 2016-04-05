@@ -19,52 +19,79 @@ def num_holes(uid,day):
 		end = data.iat[row,1]
 		print "Number of data points: ",data.shape[0]
 		numpts = data.shape[0]
-		writer.writerow([uid,start,end,numpts])
+		print "Average Accuracy: ",data['accuracy'].mean()
+		avg_acc = data['accuracy'].mean()
+		median_acc = data['accuracy'].median()
+		writer.writerow([uid,start,end,numpts,avg_acc,median_acc])
 
 import datetime
 import numpy as np
 
-'''def heatmap(uid,day):
+def heatmap(day):
 	fields = ['time','ID','Day']
-	data = pd.read_csv('masterfile.csv',usecols=fields)
-	data['hole']  = 1
+	df = pd.read_csv('masterfile.csv',usecols = fields)
+	df['hole'] = 1
 
-	df = data.loc[data['Day']== day]
-	data = df.loc[df['ID']== uid]
-	data['time'] = pd.to_datetime(data.time)
+	datalists = []
 
-	for x in data['time']:
-		mod_time = x.replace(second=0, microsecond=0)
-		i = data.loc[data['time']==x].index
-		data.set_value(i, 'time', mod_time)
+	for uid in df['ID'].unique():
+		dfsplit = df.loc[df['ID']==uid]
+		dfsplit['time'] = pd.to_datetime(dfsplit.time)
+		datalists.append(dfsplit)
 
-	data = data.sort('time')
-	start = data.iat[0,0]
-	nextt = start + datetime.timedelta(minutes=1)
-	print data.shape
-	data.drop_duplicates(inplace=True)
-	ctr = 3000
-	for x in range(0,20):
-		if any(data['time']!=x):
-			d = {'time':nextt,'Day':day,'ID':uid,'hole':0}
-			df2 = pd.DataFrame(data=d,index=[ctr])
-			ctr = int(ctr)+1
-			print "herer"
-			data.append(df2, ignore_index = True) #hole present
-		nextt = nextt + datetime.timedelta(minutes = 1)
+	start = datetime.datetime(2016,4,day,0,0,0)
+	stop = datetime.datetime(2016,4,day,23,59,0)
 
-	print data.shape
-	print start
-	print nextt'''
+	ctr = True
+	while(start!=stop):
+		start = start+datetime.timedelta(minutes = 1)
+		for data in datalists:
+			if any(data['time']== start) or any(data['time']-start<datetime.timedelta(minutes=1)):
+				continue
+			else:
+				uid = data['ID'].unique()
+				df1 = pd.DataFrame({'time':start,'Day':day,'ID': uid[0],'hole':0},index=[0])
+				if ctr:
+					frames = [df1]
+					ctr = False
+				else:
+					frames = [df1,result]
+				result = pd.concat(frames)
+	
+	for data in datalists:
+		frames = [data,result]
+		result = pd.concat(frames)
 
+	result.to_csv("holesheet.csv")
+
+def accuracy_heatmap(day):
+	result = pd.read_csv("masterfile.csv")
+	result = result.loc[result['Day']==day]
+	result = result.pivot("ID","time","accuracy")
+	ax = sns.heatmap(result)
+	sns.plt.show()
+
+import seaborn as sns
+import matplotlib as plt
+'''
+result = pd.read_csv("holesheet.csv")
+result = result.pivot("ID","time","hole")
+ax = sns.heatmap(result)
+sns.plt.show()'''
+
+accuracy_heatmap(4)
+
+
+'''
 df = pd.read_csv('masterfile.csv')
-#heatmap('bhardwaj.rish',4)
+heatmap(4)'''
+'''
 print "Number of subjects: ",len(df['ID'].unique())
 print "Summary: \n",pd.value_counts(df['ID'].values)
 for day in df['Day'].unique():
 	daynum = "Day "+str(day)+".csv"
 	with open(daynum,'wb') as filename:
 		writer = csv.writer(filename)
-		writer.writerow(['ID','Starting Time','Ending Time','Number of data points'])
+		writer.writerow(['ID','Starting Time','Ending Time','Number of data points','Mean Accuracy','Median Accuracy'])
 		for uid in df['ID'].unique():
-			num_holes(uid,day)
+			num_holes(uid,day)'''
