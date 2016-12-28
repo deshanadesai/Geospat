@@ -10,7 +10,19 @@ The link to our research paper is : [https://arxiv.org/abs/1611.03298](https://a
 ### DSSN: Dataset
 
 The dataset introduced in this paper is DSSN (DAIICT Spatio-Temporal Network), a link to the same is: [https://github.com/deshanadesai/Geospat/blob/master/Dataset.csv.tar.gz](https://github.com/deshanadesai/Geospat/blob/master/Dataset.csv.tar.gz)
-The link cannot be viewed raw but you can download the file.
+The link cannot be viewed raw but you can download the file. The self reported survey complementing this dataset is available at: [Coming Soon]()
+
+For each user, the timestamp, latitude and longitude, elevation, accuracy, satellites, network provider is recorded at a regular interval of 1 minute. The total number of data points reported in this dataset are 6,59,268 (this data is publicly available and used for the following analysis in the paper). The total number of subjects using the application to record data are 74, however with cleaning based on quality checks, we reduce the number to 46. The data recorded varies in accuracy with an average accuracy of 36.0 meters.
+
+The subjects from this study consisted of students pursuing B-Tech ICT at DAIICT (Dhirubhai Ambani Institute of Information and Communication Technology), a university located in Gujarat, India. It has a residential campus which spans 60 acres and houses approximately 1,500 students. The subjects volunteered to become part of the experiment.
+
+The data was collected from the subjects between the months of March and May, 2016. For this paper’s analyses, we used a subset of the data collected during the month of April, 2016. Out of the 46 subjects previously mentioned, that participated in the study, 36 completed the survey conducted in July, 2016. 
+
+The data was collected from the Android-based mobile phones of the subjects. The subjects installed the [GPS-Logger app](https://play.google.com/store/apps/details?id=com.crearo.gpslogger) which is available on playstore. The application exploits the GPS capabilities of the mobile phones to log co-ordinates and runs as a background process at all times.
+
+We conducted an online survey for the subjects who participated in the DSSN data collection. The survey is detailed and focuses on questions to report strength of friendship and estimated average proximity with each subject. It also includes general questions regarding the subjects’ social behaviour, participation in various activities, anxiety levels, academic performance etc.
+
+For more details, please visit the paper. Thank You.
 
 ### Demo
 
