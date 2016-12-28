@@ -16,11 +16,9 @@ For each user, the timestamp, latitude and longitude, elevation, accuracy, satel
 
 The subjects from this study consisted of students pursuing B-Tech ICT at DAIICT (Dhirubhai Ambani Institute of Information and Communication Technology), a university located in Gujarat, India. It has a residential campus which spans 60 acres and houses approximately 1,500 students. The subjects volunteered to become part of the experiment.
 
-The data was collected from the subjects between the months of March and May, 2016. For this paper’s analyses, we used a subset of the data collected during the month of April, 2016. Out of the 46 subjects previously mentioned, that participated in the study, 36 completed the survey conducted in July, 2016. 
+The data was collected from the subjects between the months of March and May, 2016. For this paper’s analyses, we used a subset of the data collected during the month of April, 2016. Out of the 46 subjects previously mentioned, that participated in the study, 36 completed the survey conducted in July, 2016. The survey is detailed and focuses on questions to report strength of friendship and estimated average proximity with each subject. It also includes general questions regarding the subjects’ social behaviour, participation in various activities, anxiety levels, academic performance etc.
 
 The data was collected from the Android-based mobile phones of the subjects. The subjects installed the [GPS-Logger app](https://play.google.com/store/apps/details?id=com.crearo.gpslogger) which is available on playstore. The application exploits the GPS capabilities of the mobile phones to log co-ordinates and runs as a background process at all times.
-
-We conducted an online survey for the subjects who participated in the DSSN data collection. The survey is detailed and focuses on questions to report strength of friendship and estimated average proximity with each subject. It also includes general questions regarding the subjects’ social behaviour, participation in various activities, anxiety levels, academic performance etc.
 
 For more details, please visit the paper. Thank You.
 
